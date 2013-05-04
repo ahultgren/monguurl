@@ -1,0 +1,23 @@
+{
+  "name": "monguurl",
+  "version": "0.0.1",
+  "description": "Automatically generate a unique and url-friendly alias/slug and store it in Mongoose",
+  "main": "lib/monguurl.js",
+  "scripts": {},
+  "repository": "git://github.com/ahultgren/monguurl.git",
+  "keywords": [
+    "url",
+    "alias",
+    "mongoose",
+    "slug",
+    "unique"
+  ],
+  "author": "Andreas Hultgren (http://andreashultgren.se)",
+  "license": "MIT",
+  "dependencies": {
+    "urlify": "~0.2.2"
+  },
+  "directories": {
+    "lib": "./lib"
+  }
+}
