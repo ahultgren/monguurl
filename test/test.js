@@ -1,3 +1,5 @@
+"use strict";
+
 var mongoose = require('mongoose'),
     monguurl = require('../.'),
     should = require('chai').should(),
