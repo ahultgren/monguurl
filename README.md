@@ -1,6 +1,6 @@
 # Monguurl
 
-Automatically generate a unique and url-friendly alias/slug and store it in Mongoose. Assumes you have a field on which the alias is based on. For posts it's common to generate an alias from the title.
+Automatically generate a unique and url-friendly alias/slug and store it in Mongoose. For example for posts it's common to generate an alias/slug from the title.
 
 ## Example
 
