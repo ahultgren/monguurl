@@ -1,6 +1,6 @@
 {
   "name": "monguurl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Automatically generate a unique and url-friendly alias/slug and store it in Mongoose",
   "main": "lib/monguurl.js",
   "scripts": {},
