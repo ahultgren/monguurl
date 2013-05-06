@@ -17,6 +17,10 @@
   "dependencies": {
     "urlify": "~0.2.2"
   },
+  "devDependencies": {
+    "mongoose": "~3.6.9",
+    "chai": "~1.6.0"
+  },
   "directories": {
     "lib": "./lib"
   }
