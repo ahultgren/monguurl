@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     monguurl = require('../.'),
     should = require('chai').should(),
-    Post, Page, Redirect;
+    Post, Page, Redirect, Short;
 
 
 /* Setup
@@ -25,6 +25,11 @@ Redirect = new mongoose.Schema({
   target: String
 });
 
+Short = new mongoose.Schema({
+  title: String,
+  alias: String
+});
+
 Post.plugin(monguurl());
 Page.plugin(monguurl({
   source: 'name',
@@ -33,10 +38,14 @@ Page.plugin(monguurl({
 Redirect.plugin(monguurl({
   target: 'target'
 }));
+Short.plugin(monguurl({
+  length: 10
+}));
 
 mongoose.model('Post', Post);
 mongoose.model('Page', Page);
 mongoose.model('Redirect', Redirect);
+mongoose.model('Short', Short);
 
 
 /* Tests
@@ -160,6 +169,69 @@ describe('Only alias', function () {
 
   after(function (done) {
     mongoose.model('Redirect').remove({}, function () {
+      done();
+    });
+  });
+});
+
+describe('Shorter alias', function () {
+  it('Short', function (done) {
+    mongoose.model('Short').create({
+      title: 'Short'
+    }, function (err, doc) {
+      should.not.exist(err);
+      should.exist(doc);
+      doc.should.have.property('alias').and.equal('short');
+      done();
+    });
+  });
+
+  it('Just the right length', function (done) {
+    mongoose.model('Short').create({
+      title: 'Blå skålar'
+    }, function (err, doc) {
+      should.not.exist(err);
+      should.exist(doc);
+      doc.should.have.property('alias').and.equal('blaa-skaalar');
+      done();
+    });
+  });
+
+  it('Just the right length again', function (done) {
+    mongoose.model('Short').create({
+      title: 'Blå skålar'
+    }, function (err, doc) {
+      should.not.exist(err);
+      should.exist(doc);
+      doc.should.have.property('alias').and.equal('blaa-skaalar-2');
+      done();
+    });
+  });
+
+  it('Too long', function (done) {
+    mongoose.model('Short').create({
+      title: 'The quick mongoose jumped over the lazy mysql'
+    }, function (err, doc) {
+      should.not.exist(err);
+      should.exist(doc);
+      doc.should.have.property('alias').and.equal('the-quick');
+      done();
+    });
+  });
+
+  it('Too long again', function (done) {
+    mongoose.model('Short').create({
+      title: 'The quick mongoose jumped over the lazy mysql'
+    }, function (err, doc) {
+      should.not.exist(err);
+      should.exist(doc);
+      doc.should.have.property('alias').and.equal('the-quick-2');
+      done();
+    });
+  });
+
+  after(function (done) {
+    mongoose.model('Short').remove({}, function () {
       done();
     });
   });

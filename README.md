@@ -55,6 +55,8 @@ The ending number will increase to "-100", then it will be "-100-2". This is to 
 
 Also note that theoretically this plugin can be used without a source/title, if such behavior is desired. Just set the target field when creating the document and any source will be ignored.
 
+**Update:** It's now also possible to set a max-length for aliases. Setting `monguurl({ length: 40 })` will cut the alias approximately at the space (dash) closest before the limit. If there's no space/dash, the string will be cut off at the limit anyway. The final length might be up to 6 bytes longer to accomodate for appended numbers. The default length is 0, which is unlimited.
+
 
 ## Installation
 
